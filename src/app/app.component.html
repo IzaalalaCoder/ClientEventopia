@@ -1,0 +1,4 @@
+<app-menu-bar (updateList)="updateCategories()" (returnHome)="toggleDisplaySearch()" (searchResponse)="gainedResponse($event)"></app-menu-bar>
+<app-category-list *ngIf="!search" [cats]="categories" (update)="loadCategories()"></app-category-list>
+<app-category-paginated-list *ngIf="search" [searchData]="searchData"></app-category-paginated-list>
+<router-outlet></router-outlet>

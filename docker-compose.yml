@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerfileBack 
+    ports:
+      - "8080:8080"
+  catify-client:
+    build:
+      context: .
+      dockerfile: DockerfileFront 
+    ports:
+      - '4200:4200'

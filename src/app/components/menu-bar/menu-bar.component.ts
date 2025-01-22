@@ -1,24 +1,35 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormCreateEventComponent } from '../form-create-event/form-create-event.component';
+import { FormCreateArtistComponent } from '../form-create-artist/form-create-artist.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [FormCreateEventComponent, CommonModule],
+  imports: [FormCreateEventComponent, FormCreateArtistComponent, CommonModule],
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
 export class MenuBarComponent {
-  isCreateOpen: boolean = false;
+  isCreateEventOpen: boolean = false;
+  isCreateArtistOpen: boolean = false;
 
-  @Output() updateList = new EventEmitter<void>();
+  @Output() updateListE = new EventEmitter<void>();
+  @Output() updateListA = new EventEmitter<void>();
 
   toggleEventCreateForm() {
-    this.isCreateOpen = !this.isCreateOpen;
+    this.isCreateEventOpen = !this.isCreateEventOpen;
+  }
+
+  toggleArtistCreateForm() {
+    this.isCreateArtistOpen = !this.isCreateArtistOpen;
   }
 
   updateListEvents() {
-    this.updateList.emit();
+    this.updateListE.emit();
+  }
+
+  updateListArtists() {
+    this.updateListA.emit();
   }
 }

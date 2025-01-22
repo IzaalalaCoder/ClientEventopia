@@ -22,12 +22,7 @@ export class EventComponent {
   isEditOpen : boolean =  false;
   isViewOpen : boolean = false;
 
-  constructor(private eventService : EventService) {
-  }
-
-  ngOnInit(): void {
-    
-  }
+  constructor(private eventService : EventService) { }
 
   updateEvent() {
     this.update.emit();
@@ -55,12 +50,24 @@ export class EventComponent {
       this.update.emit();
     });
   }
+  
+  linkArtist(id : string) {
+    if (id == null) {
+      return;
+    }
+    this.eventService.linkArtist(this.event.id, id).subscribe(() => {
+      this.update.emit();
+    });
+  }
 
-  // unlinkCategory(parentId : number, childId : number) {
-  //   this.categoryService.unlinkCategory(parentId, childId).subscribe(() => {
-  //     this.update.emit();
-  //   });
-  // }
+  unlinkArtist(id : string) {
+    if (id == null) {
+      return;
+    }
+    this.eventService.unlinkArtist(this.event.id, id).subscribe(() => {
+      this.update.emit();
+    });
+  }
 
   unViewEvent() {
     this.isViewOpen = false;

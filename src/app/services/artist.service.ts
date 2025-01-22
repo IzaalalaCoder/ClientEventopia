@@ -32,4 +32,8 @@ export class ArtistService {
     return this.http.post<any>(this.API_URL_ARTISTS, artist, { headers });
   }
 
+  getAllEventsOfArtist(id: string) : Observable<any[]> {
+    return this.http.get<any[]>(this.API_URL_ARTISTS + "/" + id + "/events");
+  }
+
 }

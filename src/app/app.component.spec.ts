@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'catify-client' title`, () => {
+  it(`should have the 'eventopia-client' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('catify-client');
+    expect(app.title).toEqual('eventopia-client');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, catify-client');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, eventopia-client');
   });
 });

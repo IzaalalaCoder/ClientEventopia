@@ -7,7 +7,7 @@ services:
       dockerfile: DockerfileBack 
     ports:
       - "8080:8080"
-  catify-client:
+  eventopia-client:
     build:
       context: .
       dockerfile: DockerfileFront 

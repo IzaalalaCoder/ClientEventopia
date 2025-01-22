@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-form-edit-event',
@@ -38,28 +39,20 @@ export class FormEditEventComponent implements OnInit {
     }
   }
 
-  private convertToDateFormat(date: string): string {
-    const [day, month, year] = date.split('/');
-    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-  }
-
   submit() {
     if (this.eventForm.valid) {
-      const startDate = this.convertToDateFormat(this.eventForm.value.startDate);
-      const endDate = this.convertToDateFormat(this.eventForm.value.endDate);
 
-      if (new Date(startDate) > new Date(endDate)) {
+      if (new Date(this.eventForm.value.startDate) > new Date(this.eventForm.value.endDate)) {
         return;
       }
 
-      if (this.event) {
-        const updatedEvent = {
-          ...this.eventForm.value,
-          startDate: startDate,
-          endDate: endDate
-        };
+      const event: Event = new Event();
+      event.label = this.eventForm.value.label;
+      event.startDate = this.eventForm.value.startDate;
+      event.endDate = this.eventForm.value.endDate;
 
-        this.eventService.updateEvent(this.event.id, updatedEvent).subscribe(() => {
+      if (this.event) {
+        this.eventService.updateEvent(this.event.id, event).subscribe(() => {
           this.update.emit();
           this.closeForm.emit();
         });

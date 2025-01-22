@@ -27,7 +27,6 @@ export class FormCreateEventComponent {
 
   submit() {
     if (this.eventForm.invalid) {
-      console.log('Formulaire invalide');
       return;
     }
 
@@ -37,13 +36,11 @@ export class FormCreateEventComponent {
     event.endDate = this.eventForm.value.endDate;
 
     if (new Date(event.startDate) > new Date(event.endDate)) {
-      console.error('La date de début ne peut pas être après la date de fin');
       return;
     }
 
     this.eventService.createEvent(event).subscribe(() => {
       this.added.emit();
-      console.log('Événement ajouté');
     });
   }
 

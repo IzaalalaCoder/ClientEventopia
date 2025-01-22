@@ -1,1 +1,9 @@
-<p>artist works!</p>
+<div class="artist">
+    <h2>{{artist.label}}</h2>
+    <div class="img">
+        <img (click)='toggleArtistEditForm()' src="assets/img/edit.png" alt="Modifier l'artiste">
+        <img (click)='removeArtist()' alt="Supprimer l'artiste" src="assets/img/remove.png">
+    </div>
+</div>
+
+<app-form-edit-artist *ngIf="isEditOpen" (update)="updateArtist()" (closeForm)="toggleArtistEditForm()" [artist]="artist"></app-form-edit-artist>

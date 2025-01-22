@@ -1,0 +1,22 @@
+<div id="form-create">
+    <div id="quit" (click)="closeEventForm()">
+        <img src="assets/img/quit.png" alt="Logo permettant de quitter le formulaire">
+    </div>
+    <h1>Créer un nouvel évènement</h1>
+    <form [formGroup]="eventForm" (ngSubmit)="submit()">
+        <h2>Nom de l'évènement</h2>
+        <div class="form-group">
+            <input id="label" autocomplete="off" placeholder="Nom de l'évènement" type="text" class="form-control" formControlName="label">
+        </div>
+        <h2>Date de début de l'évènement</h2>
+        <div class="form-group">
+            <input id="startDate" autocomplete="off" type="date" class="form-control" formControlName="startDate">
+        </div>
+        <h2>Date de fin de l'évènement</h2>
+        <div class="form-group">
+            <input id="endDate" autocomplete="off" type="date" class="form-control" formControlName="endDate">
+        </div>
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+</div>
+

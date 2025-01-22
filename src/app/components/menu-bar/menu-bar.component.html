@@ -1,0 +1,6 @@
+<nav>
+  <li><img id="logo_app" src="assets/img/logo.png" alt="Logo"></li>
+  <li><img id="icon" (click)="toggleEventCreateForm()" src="assets/img/add_category.png" alt="Ajouter un nouvel évènement"></li>
+</nav>
+
+<app-form-create-event *ngIf="isCreateOpen" (added)="updateListEvents()" (closeForm)="toggleEventCreateForm()"></app-form-create-event>

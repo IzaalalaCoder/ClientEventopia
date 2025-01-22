@@ -1,0 +1,13 @@
+<div id="form-update">
+    <div id="quit" (click)="closeArtistForm()">
+        <img src="assets/img/quit.png" alt="Quitter le formulaire">
+    </div>
+    <h2>Mise à jour de {{ artist.label }}</h2>
+    <form [formGroup]="artistForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="label">Nom de l'artiste</label>
+            <input autocomplete="off" id="label" name="label" formControlName="label" class="form-control" type="text" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="eventForm.invalid">Modifier l'artiste</button>
+    </form>
+</div>

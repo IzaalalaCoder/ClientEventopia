@@ -1,1 +1,1 @@
-<p>list-artist works!</p>
+<app-artist *ngFor = "let a of artists" [artist]="a" (update)="updateListArtists()"></app-artist>

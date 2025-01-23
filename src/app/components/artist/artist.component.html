@@ -4,6 +4,9 @@
         <img (click)='toggleArtistEditForm()' src="assets/img/edit.png" alt="Modifier l'artiste">
         <img (click)='removeArtist()' alt="Supprimer l'artiste" src="assets/img/remove.png">
     </div>
+    <div class="events">
+        <app-event *ngFor = "let e of eventsOfArtist" [event]="e" (update)="updateArtist()" ></app-event>
+    </div>
 </div>
 
 <app-form-edit-artist *ngIf="isEditOpen" (update)="updateArtist()" (closeForm)="toggleArtistEditForm()" [artist]="artist"></app-form-edit-artist>

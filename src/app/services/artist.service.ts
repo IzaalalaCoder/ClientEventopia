@@ -10,8 +10,9 @@ export class ArtistService {
 
   constructor(private http : HttpClient) { }
 
-  getAllArtists() : Observable<any[]> {
-    return this.http.get<any[]>(this.API_URL_ARTISTS);
+  getAllArtists(page: number = 0) : Observable<any[]> {
+    const params = { page: page.toString() , size : "10"};
+    return this.http.get<any[]>(this.API_URL_ARTISTS, { params });
   }
 
   getSpecificArtist(id: string) : Observable<any[]> {

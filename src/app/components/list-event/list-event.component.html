@@ -1,3 +1,5 @@
+<h2>Les évènements</h2>
+
 <div *ngIf="events && events.content.length > 0">
     <app-event *ngFor="let event of events.content" [event]="event" (update)="updateListEvents()"></app-event>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArtistComponent } from '../artist/artist.component';
 import { ArtistService } from '../../services/artist.service';
 import { CommonModule } from '@angular/common';

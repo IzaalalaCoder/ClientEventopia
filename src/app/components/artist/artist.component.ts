@@ -1,17 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Artist } from '../../models/artist.model';
 import { FormEditArtistComponent } from '../form-edit-artist/form-edit-artist.component';
+import { EventComponent } from '../event/event.component';
 import { ArtistService } from './../../services/artist.service';
 
 @Component({
   selector: 'app-artist',
   standalone: true,
-  imports: [CommonModule, FormEditArtistComponent],
+  imports: [CommonModule, FormEditArtistComponent, EventComponent],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.css'
 })
-export class ArtistComponent {
+export class ArtistComponent implements OnInit {
   @Input({
     required: true
   }) artist : Artist = new Artist();
@@ -21,8 +22,15 @@ export class ArtistComponent {
   artistSpecific: any = {};
   isEditOpen : boolean =  false;
   isViewOpen : boolean = false;
+  eventsOfArtist : any = []
 
   constructor(private artistService : ArtistService) { }
+
+  ngOnInit() {
+    this.artistService.getAllEventsOfArtist(this.artist.id).subscribe((datas: any) => {
+      this.eventsOfArtist = datas;
+    });
+  }
 
   updateArtist() {
     this.update.emit();

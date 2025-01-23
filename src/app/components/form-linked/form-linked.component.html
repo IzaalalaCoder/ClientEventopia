@@ -1,0 +1,7 @@
+<select *ngIf="onEvent" formControlName="artists">
+    <option *ngFor="let artist of artistsList" [value]="artist.id">{{ artist.name }}</option>
+</select>
+
+<select *ngIf="!onEvent" formControlName="events">
+    <option *ngFor="let event of eventsList" [value]="event.id">{{ event.title }}</option>
+</select>

@@ -3,9 +3,10 @@
     <div class="img">
         <img (click)='toggleArtistEditForm()' src="assets/img/edit.png" alt="Modifier l'artiste">
         <img (click)='removeArtist(artist.id)' alt="Supprimer l'artiste" src="assets/img/remove.png">
+        <img (click)='addNewEvent(artist.id)' alt="Ajouter un nouvel évènement" src="assets/img/link.png">
     </div>
     <div class="events">
-        <app-event *ngFor = "let e of eventsOfArtist" [event]="e" (update)="updateArtist()" ></app-event>
+        <app-event *ngFor = "let e of eventsOfArtist" [event]="e" (update)="updateArtist()" >{{e.label}}</app-event>
     </div>
 </div>
 

@@ -22,12 +22,16 @@ export class ArtistComponent implements OnInit {
   artistSpecific: any = {};
   isEditOpen : boolean =  false;
   isViewOpen : boolean = false;
-  eventsOfArtist : any = []
+  eventsOfArtist : Event[] = [];
 
   constructor(private artistService : ArtistService) { }
 
   ngOnInit() {
-    this.artistService.getAllEventsOfArtist(this.artist.id).subscribe((datas: any) => {
+    this.loadEventOfArtist();
+  }
+
+  loadEventOfArtist() {
+    this.artistService.getAllEventsOfArtist(this.artist.id).subscribe((datas: Event[]) => {
       this.eventsOfArtist = datas;
     });
   }

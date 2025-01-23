@@ -21,6 +21,7 @@ export class EventComponent {
   eventSpecific: any = {};
   isEditOpen : boolean =  false;
   isViewOpen : boolean = false;
+  toggleLink : boolean = false;
 
   constructor(private eventService : EventService) { }
 
@@ -71,5 +72,9 @@ export class EventComponent {
 
   unViewEvent() {
     this.isViewOpen = false;
+  }
+
+  addNewArtist() {
+    this.toggleLink = true;
   }
 }

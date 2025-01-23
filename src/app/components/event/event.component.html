@@ -4,11 +4,17 @@
             <div id="image">
                 <img (click)='toggleEventEditForm()' src="assets/img/edit.png" alt="Modifier l'évènement">
                 <img (click)='removeEvent(event.id)' alt="Supprimer l'évènement" src="assets/img/remove.png">
+                <img (click)='addNewArtist()' alt="Ajouter un nouvel artiste" src="assets/img/link.png">
             </div>
             <h1>{{event.label}}</h1> 
             <p>De {{event.startDate}} à {{event.endDate}}</p>
         </div>
     </div>
+    <div class="artists">
+        <div class="artist" *ngFor="let artist of event.artists">{{artist.label}}</div>
+    </div>
 </div>
 
 <app-form-edit-event *ngIf="isEditOpen" (update)="updateEvent()" (closeForm)="toggleEventEditForm()" [event]="event"></app-form-edit-event>
+
+<app-form-linked *ngIf="toggleLink" [event]="event" ></app-form-linked>

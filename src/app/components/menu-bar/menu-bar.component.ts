@@ -15,7 +15,9 @@ export class MenuBarComponent {
   isCreateArtistOpen: boolean = false;
 
   @Output() updateListE = new EventEmitter<void>();
+  @Output() viewE = new EventEmitter<void>();
   @Output() updateListA = new EventEmitter<void>();
+  @Output() viewA = new EventEmitter<void>();
 
   toggleEventCreateForm() {
     this.isCreateEventOpen = !this.isCreateEventOpen;
@@ -31,5 +33,13 @@ export class MenuBarComponent {
 
   updateListArtists() {
     this.updateListA.emit();
+  }
+
+  displayListEvents() {
+    this.viewE.emit();
+  }
+
+  displayListArtists() {
+    this.viewA.emit();
   }
 }

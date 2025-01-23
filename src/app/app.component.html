@@ -1,3 +1,4 @@
-<app-menu-bar (updateListE)="loadEvents()" (updateListA)="loadArtists()"></app-menu-bar>
-<app-list-event [events]="events" (update)="loadEvents()"></app-list-event>
+<app-menu-bar (viewA)="displayListA()" (viewE)="displayListE()" (updateListE)="loadEvents()" (updateListA)="loadArtists()"></app-menu-bar>
+<app-list-event *ngIf="viewE" [events]="events" (update)="loadEvents()"></app-list-event>
+<app-list-artist *ngIf="viewA" [artists]="artists" (update)="loadArtists()"></app-list-artist>
 <router-outlet></router-outlet>

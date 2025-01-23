@@ -14,7 +14,7 @@ import { Event } from '../../models/event.model';
 export class FormEditEventComponent implements OnInit {
   @Input() event: any = [];
   @Output() closeForm = new EventEmitter<void>();
-  @Output() updateE = new EventEmitter<void>();
+  @Output() update = new EventEmitter<void>();
 
   events: any[] = [];
   eventForm: FormGroup = new FormGroup({
@@ -53,7 +53,7 @@ export class FormEditEventComponent implements OnInit {
 
       if (this.event) {
         this.eventService.updateEvent(this.event.id, event).subscribe(() => {
-          this.updateE.emit();
+          this.update.emit();
           this.closeForm.emit();
         });
       }

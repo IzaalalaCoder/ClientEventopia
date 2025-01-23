@@ -13,7 +13,7 @@ import { Artist } from '../../models/artist.model';
 })
 export class FormCreateArtistComponent {
   @Output() closeForm = new EventEmitter<void>();
-  @Output() addedA = new EventEmitter<void>();
+  @Output() added = new EventEmitter<void>();
 
   artistForm: FormGroup;
 
@@ -32,11 +32,11 @@ export class FormCreateArtistComponent {
     artist.label = this.artistForm.value.label;
 
     this.artistService.createArtist(artist).subscribe(() => {
-      this.addedA.emit();
+      this.added.emit();
     });
   }
 
-  closeEventForm() {
+  closeArtistForm() {
     this.closeForm.emit();
   }
 }

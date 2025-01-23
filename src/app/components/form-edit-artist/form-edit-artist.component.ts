@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ArtistService } from '../../services/artist.service';
 import { Artist } from '../../models/artist.model';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-edit-artist',
-  imports: [],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form-edit-artist.component.html',
   styleUrl: './form-edit-artist.component.css'
 })
 export class FormEditArtistComponent {
   @Input() artist: any = [];
   @Output() closeForm = new EventEmitter<void>();
-  @Output() updateA = new EventEmitter<void>();
+  @Output() update = new EventEmitter<void>();
 
   artistForm: FormGroup = new FormGroup({
     label: new FormControl("")
@@ -27,7 +30,7 @@ export class FormEditArtistComponent {
 
       if (this.artist) {
         this.artistService.updateArtist(this.artist.id, newArtist).subscribe(() => {
-          this.updateA.emit();
+          this.update.emit();
           this.closeForm.emit();
         });
       }

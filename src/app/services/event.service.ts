@@ -33,10 +33,10 @@ export class EventService {
   }
   
   linkArtist(idEvent: string, idArtist: string): Observable<any> {
-    return this.http.post<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist, { headers })
+    return this.http.post<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist, {})
   }
 
   unlinkArtist(idEvent: string, idArtist: string): Observable<any> {
-    return this.http.delete<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist, { headers })
+    return this.http.delete<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist)
   }
 }

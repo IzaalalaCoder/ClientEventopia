@@ -9,19 +9,6 @@
             <p>De {{event.startDate}} à {{event.endDate}}</p>
         </div>
     </div>
-    <div class="artists">
-      <p>La liste des artistes</p>
-      <!-- <img (click)='toggleCategoryEditForm(category.id != null ? category.id : -1, "childs")' alt="Ajouter une sous catégorie existante à la catégorie" src="assets/img/add_sub_category.png"> -->
-      <!-- <div *ngFor="let c of event.artist" class="artist">
-        <p>{{c.name}}</p>
-        <button (click)="unlinkCategory(category.id == null ? -1 : category.id, c.id == null  ? -1 : c.id)" class="btn">
-            <img src="assets/img/unlink.png" alt="Supprimer la sous catégorie">
-        </button>
-        <button (click)="getSpecificCategory(c.id == null ? -1 : c.id)" class="btn">
-          <img src="assets/img/view.png" alt="Visionner la sous catégorie">
-      </button>
-      </div> -->
-    </div>
 </div>
 
 <app-form-edit-event *ngIf="isEditOpen" (update)="updateEvent()" (closeForm)="toggleEventEditForm()" [event]="event"></app-form-edit-event>

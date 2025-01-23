@@ -1,9 +1,11 @@
+import { Artist } from "./artist.model";
+
 export class Event {
     id: string = "";
     label: string = "";
     startDate: string = "";
     endDate: string = "";
-    // artists: Artist[] = [];
+    artists: Artist[] = [];
 
     copy(): Event {
         return Object.assign(new Event(), this);

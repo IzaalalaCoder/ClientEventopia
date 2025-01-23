@@ -16,8 +16,23 @@ export class ListEventComponent {
   @Input({
     required: true,
     alias: 'events'
-  }) events : any[] = [];
+  }) events : any = {};
   @Output() update = new EventEmitter<void>();
+
+  constructor(private eventService: EventService) {}
+  
+    loadEvents(): void {
+      this.eventService.getAllEvents(this.events.pageable.pageNumber).subscribe((data: any) => {
+        this.events = data;
+      });
+    }
+  
+    changePage(page: number): void {
+      if (page >= 0 && page < this.events.totalPages) {
+        this.events.pageable.pageNumber = page; 
+        this.loadEvents();
+      }
+    }
 
   updateListEvents() {
     this.update.emit();

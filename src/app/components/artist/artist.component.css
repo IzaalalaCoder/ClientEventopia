@@ -1,0 +1,61 @@
+.event {
+    margin: 2% auto;
+    border: 3px solid black;
+    border-radius: 30px;
+    width: 90%;
+}
+
+#head {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+}
+
+h1 {
+    font-size: larger;
+    margin-left: 3%;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+#header {
+    border-bottom: 2px solid grey;
+    margin-bottom: 10px;
+}
+
+#name {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.artists {
+    margin: 10px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.btn {
+  background: none;
+  border: none;
+}
+
+.btn img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}

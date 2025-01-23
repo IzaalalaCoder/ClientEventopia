@@ -10,8 +10,9 @@ export class EventService {
 
   constructor(private http : HttpClient) { }
 
-  getAllEvents(): Observable<any[]> {
-    return this.http.get<any[]>(this.API_URL_EVENTS);
+  getAllEvents(page: number = 0): Observable<any[]> {
+    const params = { page: page.toString() , size : "10"};
+    return this.http.get<any[]>(this.API_URL_EVENTS, { params });
   }
 
   removeEvent(id : string): Observable<any> {
@@ -31,18 +32,12 @@ export class EventService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<any>(this.API_URL_EVENTS + "/" + id, event, { headers });
   }
+  
+  linkArtist(idEvent: string, idArtist: string): Observable<any> {
+    return this.http.post<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist, {})
+  }
 
-  // getChildrenOfCategory(id : number): Observable<any[]> {
-  //   return this.http.get<any[]>(this.API_URL_CATEGORY + "/" + id + "/childrens");
-  // }
-
-  // unlinkCategory(parentId : number, childId : number): Observable<any> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   return this.http.put<any>(this.API_URL_CATEGORY + "/dissociate/" + parentId + "/" + childId, { headers })
-  // }
-
-  // linkCategory(parentId : number, childId : number): Observable<any> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   return this.http.put<any>(this.API_URL_CATEGORY + "/associate/" + parentId + "/" + childId, { headers })
-  // }
+  unlinkArtist(idEvent: string, idArtist: string): Observable<any> {
+    return this.http.delete<any>(this.API_URL_EVENTS + "/" + idEvent + "/artists/" + idArtist)
+  }
 }

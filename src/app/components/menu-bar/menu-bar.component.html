@@ -1,6 +1,9 @@
 <nav>
-  <li><img id="logo_app" src="assets/img/logo.png" alt="Logo"></li>
-  <li><img id="icon" (click)="toggleEventCreateForm()" src="assets/img/add_category.png" alt="Ajouter un nouvel évènement"></li>
+  <li><img id="icon" (click)="displayListEvents()" src="assets/img/calendar.png" alt="Voir les évènements"></li>
+  <li><img id="icon" (click)="displayListArtists()" src="assets/img/artist.png" alt="Voir les artistes"></li>|
+  <li><img id="icon" (click)="toggleEventCreateForm()" src="assets/img/add_event.png" alt="Ajouter un nouvel évènement"></li>
+  <li><img id="icon" (click)="toggleArtistCreateForm()" src="assets/img/add_artist.png" alt="Ajouter un nouvel artiste"></li>
 </nav>
 
-<app-form-create-event *ngIf="isCreateOpen" (added)="updateListEvents()" (closeForm)="toggleEventCreateForm()"></app-form-create-event>
+<app-form-create-event *ngIf="isCreateEventOpen" (added)="updateListEvents()" (closeForm)="toggleEventCreateForm()"></app-form-create-event>
+<app-form-create-artist *ngIf="isCreateArtistOpen" (added)="updateListArtists()" (closeForm)="toggleArtistCreateForm()"></app-form-create-artist>

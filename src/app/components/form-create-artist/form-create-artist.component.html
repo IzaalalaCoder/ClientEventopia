@@ -1,0 +1,14 @@
+<div id="form-create">
+    <div id="quit" (click)="closeArtistForm()">
+        <img src="assets/img/quit.png" alt="Logo permettant de quitter le formulaire">
+    </div>
+    <h1>Créer un nouvel artiste</h1>
+    <form [formGroup]="artistForm" (ngSubmit)="submit()">
+        <h2>Nom de l'artiste</h2>
+        <div class="form-group">
+            <input id="label" autocomplete="off" placeholder="Nom de l'artiste" type="text" class="form-control" formControlName="label">
+        </div>
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+</div>
+

@@ -1,1 +1,13 @@
-<app-event *ngFor = "let e of events" [event]="e" (update)="updateListEvents()"></app-event>
+<div *ngIf="events && events.content.length > 0">
+    <app-event *ngFor="let event of events.content" [event]="event" (update)="updateListEvents()"></app-event>
+
+    <div class="pagination">
+        <button (click)="changePage(events.pageable.pageNumber - 1)" [disabled]="events.pageable.pageNumber === 0">Précédent</button>
+        <span>Page {{ events.pageable.pageNumber + 1 }} / {{ events.totalPages }}</span>
+        <button (click)="changePage(events.pageable.pageNumber + 1)" [disabled]="events.pageable.pageNumber === events.totalPages - 1">Suivant</button>
+    </div>
+</div>
+
+<div *ngIf="!events || events.content.length === 0">
+    <p>Aucun événement trouvé</p>
+</div>

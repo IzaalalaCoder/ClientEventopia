@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ArtistComponent } from '../artist/artist.component';
 import { ArtistService } from '../../services/artist.service';
 import { CommonModule } from '@angular/common';
@@ -8,15 +8,27 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ArtistComponent],
   templateUrl: './list-artist.component.html',
-  styleUrl: './list-artist.component.css',
+  styleUrls: ['./list-artist.component.css'],
   providers: [ArtistService]
 })
 export class ListArtistComponent {
-  @Input({
-    required: true,
-    alias: 'artists'
-  }) artists : any[] = [];
+  @Input() artists: any = {};
   @Output() update = new EventEmitter<void>();
+
+  constructor(private artistService: ArtistService) {}
+
+  loadArtists(): void {
+    this.artistService.getAllArtists(this.artists.pageable.pageNumber).subscribe((data: any) => {
+      this.artists = data;
+    });
+  }
+
+  changePage(page: number): void {
+    if (page >= 0 && page < this.artists.totalPages) {
+      this.artists.pageable.pageNumber = page; 
+      this.loadArtists();
+    }
+  }
 
   updateListArtists() {
     this.update.emit();

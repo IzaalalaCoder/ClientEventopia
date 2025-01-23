@@ -32,13 +32,13 @@ export class AppComponent implements OnInit {
 
   loadEvents() {
     this.eventService.getAllEvents().subscribe((datas: any) => {
-      this.events = datas.content;
+      this.events = datas;
     });
   }
 
   loadArtists() {
     this.artistService.getAllArtists().subscribe((datas: any) => {
-      this.artists = datas.content;
+      this.artists = datas;
     });
   }
 

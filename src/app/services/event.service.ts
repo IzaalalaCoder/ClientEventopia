@@ -10,8 +10,9 @@ export class EventService {
 
   constructor(private http : HttpClient) { }
 
-  getAllEvents(): Observable<any[]> {
-    return this.http.get<any[]>(this.API_URL_EVENTS);
+  getAllEvents(page: number = 0): Observable<any[]> {
+    const params = { page: page.toString() , size : "10"};
+    return this.http.get<any[]>(this.API_URL_EVENTS, { params });
   }
 
   removeEvent(id : string): Observable<any> {

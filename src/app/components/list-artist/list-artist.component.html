@@ -1,1 +1,13 @@
-<app-artist *ngFor = "let a of artists" [artist]="a" (update)="updateListArtists()"></app-artist>
+<div *ngIf="artists && artists.content.length > 0">
+    <app-artist *ngFor="let artist of artists.content" [artist]="artist" (update)="updateListArtists()"></app-artist>
+
+    <div class="pagination">
+        <button (click)="changePage(artists.pageable.pageNumber - 1)" [disabled]="artists.pageable.pageNumber === 0">Précédent</button>
+        <span>Page {{ artists.pageable.pageNumber + 1 }} / {{ artists.totalPages }}</span>
+        <button (click)="changePage(artists.pageable.pageNumber + 1)" [disabled]="artists.pageable.pageNumber === artists.totalPages - 1">Suivant</button>
+    </div>
+</div>
+
+<div *ngIf="!artists || artists.content.length === 0">
+    <p>Aucun artiste trouvé</p>
+</div>

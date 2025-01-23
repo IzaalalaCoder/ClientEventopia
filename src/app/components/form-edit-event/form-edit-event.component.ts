@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { Event } from '../../models/event.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-edit-event',
